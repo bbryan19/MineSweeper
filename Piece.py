@@ -7,11 +7,12 @@ class Piece():
 
     #state.setter
     def open_piece(self):
-        self.state = 1
+        if not self.is_flagged():
+            self.state = 1
 
 
     #state.getter
-    def get_state(self):
+    def is_open(self):
         return self.state
 
 
@@ -21,7 +22,7 @@ class Piece():
 
 
     #flag.getter
-    def get_flag(self):
+    def is_flagged(self):
         return self.flag
 
 
@@ -35,6 +36,22 @@ class Piece():
     def increment(self):
         self.value += 1
 
+    def is_mine(self):
+        return (self.value < 0)
+
+    def is_empty(self):
+        return not self.value
+
 
     def __str__(self):
-        return f'{self.state}'
+        # return f'{self.value}'
+        piece_str = ''
+        if self.state:
+            piece_str = f'{self.value}'
+        else:
+            if self.flag:
+                piece_str = 'M'
+            else:
+                piece_str = '*'
+
+        return piece_str

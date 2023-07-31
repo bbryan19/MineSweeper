@@ -2,17 +2,7 @@
 import Board
 import csv
 import Piece
-
-def play(board):
-    dead = 0
-    win = 0
-    while not dead and not win:
-        print("Your move: ")
-        # Take user input and make move
-
-        # if player chooses mine --> dead = 1
-        # if player finds all mines by revealing every square that is not a mine --> win = 1
-
+import Player
 
 
 def main():
@@ -27,9 +17,9 @@ def main():
     mine_total = int(inputs[0][2])
 
     board = Board.Board(length, width, mine_total)
-    print(board)
 
-    play(board)
+    player = Player.Player('Bill')
+    player.play(board)
 
 if __name__ == '__main__':
     main()
